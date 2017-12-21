@@ -1,0 +1,36 @@
+{
+  "name": "postcss-watcher",
+  "version": "1.0.0",
+  "description": "Watches files in PostCSS bundle and emits events on change",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js",
+    "posttest": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeandconspire/postcss-watcher.git"
+  },
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "middleware"
+  ],
+  "author": "code&conspire <hi@codeandconspire.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codeandconspire/postcss-watcher/issues"
+  },
+  "homepage": "https://github.com/codeandconspire/postcss-watcher#readme",
+  "devDependencies": {
+    "postcss-import": "^11.0.0",
+    "standard": "^10.0.3",
+    "tape": "^4.8.0",
+    "tempfile": "^2.0.0"
+  },
+  "dependencies": {
+    "chokidar": "^1.7.0",
+    "postcss": "^6.0.14"
+  }
+}
