@@ -1,6 +1,6 @@
 {
   "name": "postcss-watcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Watches files in PostCSS bundle and emits events on change",
   "main": "index.js",
   "scripts": {
