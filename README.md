@@ -6,9 +6,9 @@
 [![downloads][4]][5]
 [![style][6]][7]
 
-</div>
-
 Watches files in [PostCSS](https://github.com/postcss/postcss) bundle and emits events on change.
+
+</div>
 
 ## Usage
 
