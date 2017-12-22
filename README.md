@@ -61,8 +61,8 @@ MIT
 
 [0]: https://img.shields.io/npm/v/postcss-watcher.svg?style=flat-square
 [1]: https://npmjs.org/package/postcss-watcher
-[2]: https://img.shields.io/travis/tornqvist/postcss-watcher/master.svg?style=flat-square
-[3]: https://travis-ci.org/tornqvist/postcss-watcher
+[2]: https://img.shields.io/travis/codeandconspire/postcss-watcher/master.svg?style=flat-square
+[3]: https://travis-ci.org/codeandconspire/postcss-watcher
 [4]: http://img.shields.io/npm/dm/postcss-watcher.svg?style=flat-square
 [5]: https://npmjs.org/package/postcss-watcher
 [6]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
