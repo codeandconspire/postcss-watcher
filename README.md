@@ -2,9 +2,9 @@
 
 # postcss-watcher 👀
 
-[![npm version]([0])]([1]) [![build status]([2])]([3])
-[![downloads]([4])]([5])
-[![style]([6])]([7])
+[![npm version][0]][1] [![build status][2]][3]
+[![downloads][4]][5]
+[![style][6]][7]
 
 </div>
 
