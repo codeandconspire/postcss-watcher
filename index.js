@@ -17,7 +17,7 @@ function Watcher (opts) {
     return function (root, result) {
       var last = result.processor.plugins[result.processor.plugins.length - 1]
       if (last !== 'postcss-watcher') {
-        result.warn('postcss-watcher is not the last plugin, some files may not be watcherd')
+        result.warn('postcss-watcher is not the last plugin, some files may not be watched')
       }
 
       var batch = [root.source.input.file]
