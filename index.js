@@ -13,10 +13,10 @@ function Watcher (opts) {
   }, opts))
 
   var self = this
-  this.plugin = postcss.plugin('postcss-watcher', function () {
+  this.plugin = postcss.plugin('postcss-watcher', function plugin () {
     return function (root, result) {
       var last = result.processor.plugins[result.processor.plugins.length - 1]
-      if (last !== 'postcss-watcher') {
+      if (last.postcssPlugin !== 'postcss-watcher') {
         result.warn('postcss-watcher is not the last plugin, some files may not be watched')
       }
 
