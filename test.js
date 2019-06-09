@@ -15,7 +15,7 @@ test('warn when not last plugin', function (t) {
 
   postcss([watcher.plugin(), function noop () {}]).process(
     fs.readFileSync(entry, 'utf8'),
-    {from: entry}
+    { from: entry }
   ).then(function (result) {
     watcher.close()
     var messages = result.messages
@@ -41,13 +41,13 @@ test('watches entry file', function (t) {
 
   watcher.on('change', function (path) {
     t.equal(path, entry, 'entry file triggered change')
-    watcher.close()
+    setImmediate(() => watcher.close())
   })
 
   postcss([watcher.plugin()]).process(
     fs.readFileSync(entry, 'utf8'),
-    {from: entry}
-  ).then()
+    { from: entry }
+  ).catch(t.end)
 })
 
 test('watches imported file', function (t) {
@@ -70,13 +70,13 @@ test('watches imported file', function (t) {
 
   watcher.on('change', function (path) {
     t.equal(path, imported, 'imported file triggered change')
-    watcher.close()
+    setImmediate(() => watcher.close())
   })
 
   postcss([atImport(), watcher.plugin()]).process(
     fs.readFileSync(entry, 'utf8'),
-    {from: entry}
-  ).then()
+    { from: entry }
+  ).catch(t.end)
 })
 
 test('stops watching orphaned file', function (t) {
@@ -102,7 +102,7 @@ test('stops watching orphaned file', function (t) {
   watcher.on('change', function () {
     bundle.process(
       fs.readFileSync(entry, 'utf8'),
-      {from: entry}
+      { from: entry }
     ).then(function () {
       var dir = path.dirname(imported)
       var file = path.basename(imported)
@@ -114,6 +114,35 @@ test('stops watching orphaned file', function (t) {
 
   bundle.process(
     fs.readFileSync(entry, 'utf8'),
-    {from: entry}
-  ).then()
+    { from: entry }
+  ).catch(t.end)
+})
+
+test('stops listening to pruned files', function (t) {
+  var watcher = new Watcher()
+  var entry = tempfile('-entry.css')
+  var imported = tempfile('-imported.css')
+
+  fs.writeFileSync(entry, `@import "${imported}";`)
+  fs.writeFileSync(imported, 'body { color: red; }')
+
+  watcher.on('ready', function (path) {
+    watcher.prune((file) => file === imported)
+    setTimeout(function () {
+      fs.writeFileSync(imported, 'body { color: green; }')
+      setTimeout(function () {
+        watcher.close()
+        t.end()
+      }, 200)
+    }, 100)
+  })
+
+  watcher.on('change', function (path) {
+    t.fail('pruned file triggered change')
+  })
+
+  postcss([atImport(), watcher.plugin()]).process(
+    fs.readFileSync(entry, 'utf8'),
+    { from: entry }
+  ).catch(t.end)
 })

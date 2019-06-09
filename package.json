@@ -25,12 +25,12 @@
   "homepage": "https://github.com/codeandconspire/postcss-watcher#readme",
   "devDependencies": {
     "postcss-import": "^11.0.0",
-    "standard": "^10.0.3",
+    "standard": "^12.0.1",
     "tape": "^4.8.0",
     "tempfile": "^2.0.0"
   },
   "dependencies": {
-    "chokidar": "^1.7.0",
+    "chokidar": "^3.0.1",
     "postcss": "^6.0.14"
   }
 }
